@@ -59,9 +59,9 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public List<User> getAllUsers() {
+        List<User> users = new ArrayList<>();
         try (Connection connection = Util.getConnection(); Statement statement = connection.createStatement()) {
             ResultSet set = statement.executeQuery("SELECT * FROM user");
-            List<User> users = new ArrayList<>();
             while (set.next()) {
                 users.add(new User (
                         set.getString("name"),
@@ -69,11 +69,10 @@ public class UserDaoJDBCImpl implements UserDao {
                         set.getByte("age")
                 ));
             }
-            return users;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return users;
     }
 
     public void cleanUsersTable() {
