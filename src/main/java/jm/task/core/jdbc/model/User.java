@@ -28,11 +28,6 @@ public class User {
         this.age = age;
     }
 
-    public User(String name, String lastName, Byte age, Long id) {
-        this(name, lastName, age);
-        this.id = id;
-    }
-
     public Long getId() {
         return id;
     }
