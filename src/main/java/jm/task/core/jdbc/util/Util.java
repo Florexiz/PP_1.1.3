@@ -6,20 +6,25 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 
+import java.util.Properties;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
 
 public class Util {
-    private static SessionFactory sessionFactory;
-
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/manualtest?useSSL=false",
-                "root",
-                "root"
-        );
+    public static Connection getConnection() {
+        Connection connection = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/pre-project?useSSL=false",
+                    "root",
+                    "root"
+            );
+            connection.setAutoCommit(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return connection;
     }
 
     public static Session getSession() {
