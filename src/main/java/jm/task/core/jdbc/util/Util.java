@@ -32,7 +32,7 @@ public class Util {
     public static Session getSession() {
         if (sessionFactory == null) {
             Properties properties = new Properties();
-            properties.setProperty(Environment.URL, "jdbc:mysql://localhost:3306/manualtest");
+            properties.setProperty(Environment.URL, "jdbc:mysql://localhost:3306/pre-project");
             properties.setProperty(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
             properties.setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
             properties.setProperty(Environment.USER, "root");
